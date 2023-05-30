@@ -2,13 +2,12 @@ const vouchesModel = require("../model");
 
 async function vouchIdea(req, res) {
   try {
+
     const vouch = new vouchesModel(req.body);
     const newVouch = await vouch.save();
-    console.log(newVouch);
+    // console.log(newVouch);
 
-    return res
-      .status(200)
-      .send({ code: 200, message: "idea vouched" });
+    return res.status(200).send({ code: 200, message: "idea vouched" ,data:vouch});
   } catch (error) {
     console.log(error);
     return res

@@ -1,12 +1,12 @@
 const ideasModel = require("../model");
 
-async function getAllIdeas(req, res) {
+async function getByUserId(req, res) {
+ 
   try {
-    const allIdeas = await ideasModel.find();
-
+    const idea = await ideasModel.find({ userID: req.query.userID });
     return res
       .status(200)
-      .send({ code: 200, message: "idea saved", data: allIdeas });
+      .send({ code: 200, message: "fetched by user", data: idea });
   } catch (error) {
     console.log(error);
     return res
@@ -15,4 +15,4 @@ async function getAllIdeas(req, res) {
   }
 }
 
-module.exports = getAllIdeas;
+module.exports = getByUserId;

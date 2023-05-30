@@ -1,14 +1,12 @@
-const discussionsModel = require("../model");
+const ideasModel = require("../model");
 
 async function getByID(req, res) {
   try {
-    const { ideaID } = req.query;
-
-    const discussions = await discussionsModel.find({ ideaID: ideaID });
-
+    const idea = await ideasModel.find({ ideaID: req.params.ideaID });
+    
     return res
       .status(200)
-      .send({ code: 200, message: "idea saved", data: discussions });
+      .send({ code: 200, message: "idea saved", data: idea });
   } catch (error) {
     console.log(error);
     return res

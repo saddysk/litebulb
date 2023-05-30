@@ -6,9 +6,7 @@ async function saveComment(req, res) {
     const newDiscussion = await discussion.save();
     console.log(newDiscussion);
 
-    return res
-      .status(200)
-      .send({ code: 200, message: "discussion added", data: newDiscussion });
+    return res.status(200).send({ code: 200, message: "discussion added" });
   } catch (error) {
     console.log(error);
     return res
